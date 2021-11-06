@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Amplify, { API, graphqlOperation, Storage } from 'aws-amplify';
 import awsconfig from '../aws-exports';
-// import { listSongs } from '../graphql/queries';
 import { updateSong } from '../graphql/mutations';
 import { Paper, IconButton } from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -9,25 +8,11 @@ import PauseIcon from '@material-ui/icons/Pause';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ReactPlayer from 'react-player';
 
-// HOW TO UPLOAD OUR SONGS
-
 Amplify.configure(awsconfig);
 
 const SongList = ({ songs, setSongs, fetchSongs }) => {
-  // const [songs, setSongs] = useState([]);
   const [songPlaying, setSongPlaying] = useState("");
   const [audioURL, setAudioURL] = useState("");
-
-  // const fetchSongs = async () => {
-  //   try {
-  //     const songData = await API.graphql(graphqlOperation(listSongs));
-  //     const songList = songData.data.listSongs.items;
-  //     console.log("Song list: ", songList);
-  //     setSongs(songList);
-  //   } catch (error) {
-  //     console.log("Error on fetching songs: ", error)
-  //   }
-  // }
 
   useEffect(() => {
     fetchSongs();
